@@ -32,7 +32,7 @@ public class MainActivity3 extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference modelRef = storage.getReference().child("fileag.glb");
+        StorageReference modelRef = storage.getReference().child("out.glb");
 
         ArFragment arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
         findViewById(R.id.downloadBtn)
@@ -40,7 +40,7 @@ public class MainActivity3 extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         try {
-                            File file = File.createTempFile("fileag", "glb");
+                            File file = File.createTempFile("out", "glb");
 
                             modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @RequiresApi(api = Build.VERSION_CODES.N)
