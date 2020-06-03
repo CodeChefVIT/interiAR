@@ -58,6 +58,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageV
                 Intent intent=new Intent(context,MainActivity3.class);
                 context.startActivity(intent);
             }
+            else if (pos==1){
+                Intent intent=new Intent(context,MainActivity4.class);
+                context.startActivity(intent);
+            }
+            else if (pos==2){
+                Intent intent=new Intent(context,MainActivity5.class);
+                context.startActivity(intent);
+            }
+            else if (pos==3){
+                Intent intent=new Intent(context,MainActivity6.class);
+                context.startActivity(intent);
+            }
         }
     }
 }

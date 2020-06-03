@@ -22,25 +22,25 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
-public class MainActivity3 extends AppCompatActivity {
+public class MainActivity6 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main6);
 
         FirebaseApp.initializeApp(this);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference modelRef = storage.getReference().child("out.glb");
+        StorageReference modelRef = storage.getReference().child("NewTod.glb");
 
-        ArFragment arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment1);
-        findViewById(R.id.downloadBtn1)
+        ArFragment arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment4);
+        findViewById(R.id.downloadBtn4)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try {
-                            File file = File.createTempFile("out", "glb");
+                            File file = File.createTempFile("NewTod", "glb");
 
                             modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @RequiresApi(api = Build.VERSION_CODES.N)
@@ -62,6 +62,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         }));
     }
+
     private ModelRenderable renderable ;
 
     @RequiresApi(api = Build.VERSION_CODES.N)

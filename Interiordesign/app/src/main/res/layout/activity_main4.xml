@@ -5,22 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity3">
+    tools:context=".MainActivity4">
 
     <fragment android:name="com.google.ar.sceneform.ux.ArFragment"
-        android:id="@+id/ux_fragment1"
+        android:id="@+id/ux_fragment2"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/downloadBtn1"
+        android:id="@+id/downloadBtn2"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
-        android:text="Download"
-        />
-
+        android:text="Download" />
 
 </RelativeLayout>
