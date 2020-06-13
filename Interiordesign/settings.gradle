@@ -1,0 +1,2 @@
+rootProject.name='Interior design'
+include ':app'

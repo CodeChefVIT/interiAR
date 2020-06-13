@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "859848189409",
+    "firebase_url": "https://inteiar.firebaseio.com",
+    "project_id": "inteiar",
+    "storage_bucket": "inteiar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859848189409:android:42b336a5c46b94463f1ea0",
+        "android_client_info": {
+          "package_name": "com.example.interiordesign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859848189409-v12h8nhu4mqfgbhd8p72v9u17p56gojj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUsW_tXyyS8P3ECAlesVop6jJA6QwDxTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "859848189409-v12h8nhu4mqfgbhd8p72v9u17p56gojj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
