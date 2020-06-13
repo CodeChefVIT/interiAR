@@ -1,5 +1,2 @@
-# interiAR
-
-Interior desiging app using Augumented Reality.
-
-An Application Which Populates the Idea of Interior Designing , Visualizing Objects and Displaying the Suggested Output. 
+# ARify-20
+An Ar Android Application which Visualizes and Sets up the Environment for 3D Models

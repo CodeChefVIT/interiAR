@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "32204745577",
+    "firebase_url": "https://arify-7c802.firebaseio.com",
+    "project_id": "arify-7c802",
+    "storage_bucket": "arify-7c802.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32204745577:android:7ba95803f15b1aabdb2bf8",
+        "android_client_info": {
+          "package_name": "com.example.ar_linkingdatabase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32204745577-8mgpjmsa7qneptdm66m3lelo67f7fvvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1QTNKTEV15Tmt_6Iwe0vQKHPQGTMhaWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32204745577-8mgpjmsa7qneptdm66m3lelo67f7fvvk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
