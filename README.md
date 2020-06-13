@@ -16,9 +16,9 @@ An Application Which Populates the Idea of Interior Designing , Visualizing Obje
 
 
 ## Features
-- AR Based Application For Visualizing An Empty Space 
-- Uses Dynamic Binding Of AR Visuals
-- Can Be Extended to different Objects based on Usage for a need
+- AR Based Application For Visualizing An Empty Space . 
+- Uses Dynamic Binding Of AR Visuals .
+- Can Be Extended to different Objects and Field of Interests for the Development .
 
 
 
