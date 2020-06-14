@@ -24,7 +24,13 @@ An Application Which Populates the Idea of Interior Designing , Visualizing Obje
 
 
 ## Screenshots
-<img src="https://github.com/akshatvg/common-entry-test/raw/master/static/img/header.png" alt="Project Screenshots">
+
+
+x-special/nautilus-clipboard
+copy
+file:///home/nopc/Pictures/Screenshot%20from%202020-06-08%2016-09-46.png
+
+
 
 ## Instructions to run
 
