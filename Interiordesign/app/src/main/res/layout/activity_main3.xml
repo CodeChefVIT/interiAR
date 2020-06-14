@@ -13,14 +13,34 @@
         android:layout_height="match_parent" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/downloadBtn1"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
         android:text="Download"
+        android:background="@drawable/btn_rounded"
         />
 
+    <Button
+        android:id="@+id/savebtn1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="96dp"
+        android:text="Save Screenshot"
+        android:background="@drawable/btn_rounded"/>
+
+    <Button
+        android:id="@+id/removeBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Clear"
+        android:background="@drawable/btn_rounded"/>
 
 </RelativeLayout>

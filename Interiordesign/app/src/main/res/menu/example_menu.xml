@@ -5,6 +5,12 @@
     <item
         android:id="@+id/item1"
         android:icon="@drawable/ic_icon"
+        android:title="My Profile"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item2"
+        android:icon="@drawable/ic_icon"
         android:title="Logout"
         app:showAsAction="never"/>
 
