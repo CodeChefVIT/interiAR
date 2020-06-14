@@ -11,6 +11,7 @@ import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.assets.RenderableSource;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
+import com.google.ar.sceneform.ux.TransformableNode;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -70,9 +71,12 @@ public class MainActivity extends AppCompatActivity {
         arFragment.setOnTapArPlaneListener(((hitResult, plane, motionEvent) -> {
 
             anchorNode = new AnchorNode(hitResult.createAnchor());
-            anchorNode.setRenderable(renderable);
+            TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
+            transformableNode.setParent(anchorNode);
+            transformableNode.setRenderable(renderable);
+            //anchorNode.setRenderable(renderable);
             arFragment.getArSceneView().getScene().addChild(anchorNode);
-
+            transformableNode.select();
         }));
 
     }
@@ -104,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             nodeToremove.getAnchor().detach();
             nodeToremove.setParent(null);
             nodeToremove = null;
-            Toast.makeText(this, "Test Delete - anchorNode removed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "The Object Was Successfully Deleted", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Test Delete - markAnchorNode was null", Toast.LENGTH_SHORT).show();
         }
