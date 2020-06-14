@@ -21,6 +21,8 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    ArFragment arFragment;
+    AnchorNode anchorNode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference modelRef = storage.getReference().child("fileag.glb");
+        StorageReference modelRef = storage.getReference().child("out.glb");
 
-        ArFragment arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
+        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
         findViewById(R.id.downloadBtn)
                 .setOnClickListener( v -> {
                     try {
-                        File file = File.createTempFile("fileag", "glb");
+                        File file = File.createTempFile("out", "glb");
 
                         modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                             @Override
@@ -48,9 +50,26 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        findViewById(R.id.removeBtn)
+                .setOnClickListener( v -> {
+                    try {
+                        File file = File.createTempFile("out", "glb");
+
+                        modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                removeAnchorNode(anchorNode);
+                            }
+                        });
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+
         arFragment.setOnTapArPlaneListener(((hitResult, plane, motionEvent) -> {
 
-            AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
+            anchorNode = new AnchorNode(hitResult.createAnchor());
             anchorNode.setRenderable(renderable);
             arFragment.getArSceneView().getScene().addChild(anchorNode);
 
@@ -76,5 +95,18 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this, "Model Built", Toast.LENGTH_SHORT).show();
                     renderable = modelRenderable;
                 });
+    }
+
+    private void removeAnchorNode(AnchorNode nodeToremove) {
+        //Remove an anchor node
+        if (nodeToremove != null) {
+            arFragment.getArSceneView().getScene().removeChild(nodeToremove);
+            nodeToremove.getAnchor().detach();
+            nodeToremove.setParent(null);
+            nodeToremove = null;
+            Toast.makeText(this, "Test Delete - anchorNode removed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Test Delete - markAnchorNode was null", Toast.LENGTH_SHORT).show();
+        }
     }
 }
