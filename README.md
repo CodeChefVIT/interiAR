@@ -25,11 +25,7 @@ An Application Which Populates the Idea of Interior Designing , Visualizing Obje
 
 ## Screenshots
 
-
-x-special/nautilus-clipboard
-copy
-file:///home/nopc/Pictures/Screenshot%20from%202020-06-08%2016-09-46.png
-
+<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Login.jpeg" alt="Project Screenshots" width="300px">
 
 
 ## Instructions to run
