@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">InteriAR</string>
+    <string name="existing_user">Existing User? Click <u>here</u> to login</string>
+    <string name="new_user">New user? Click <u>here</u> to register</string>
+    <string name="choosing_item">Choose item</string>
+</resources>
