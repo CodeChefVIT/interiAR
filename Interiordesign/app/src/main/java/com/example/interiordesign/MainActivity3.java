@@ -247,8 +247,9 @@ public class MainActivity3 extends AppCompatActivity {
         String user= FirebaseAuth.getInstance().getCurrentUser().getEmail();
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        String ssfile=user.replace('.','_');
         StorageReference reference=FirebaseStorage.getInstance().getReference()
-                .child(user)
+                .child(ssfile)
                 .child(Calendar.getInstance().getTime().toString()+".jpg");
         reference.putBytes(baos.toByteArray());
         Toast.makeText(this,"Screenshot uploaded successfully",Toast.LENGTH_SHORT).show();

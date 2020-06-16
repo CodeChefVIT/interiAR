@@ -22,6 +22,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView textView;
     FirebaseAuth mFirebaseAuth;
     String user;
+    String ssfile;
     private DatabaseReference mDataReference;
     private StorageReference imageReference;
     private StorageReference fileRef;
@@ -32,19 +33,19 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         textView=findViewById(R.id.textView5);
+        mFirebaseAuth=FirebaseAuth.getInstance();
         user= Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getEmail();
         String welcomemsg="Welcome "+user;
+        ssfile=user.replace('.','_');
         textView.setText(welcomemsg);
         rcvListImg=findViewById(R.id.rcv_list_img);
-        mDataReference = FirebaseDatabase.getInstance().getReference(user);
-        imageReference = FirebaseStorage.getInstance().getReference().child(user);
-
+        mDataReference = FirebaseDatabase.getInstance().getReference(ssfile);
+        imageReference = FirebaseStorage.getInstance().getReference().child(ssfile);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(false);
         rcvListImg.setHasFixedSize(false);
         rcvListImg.setLayoutManager(linearLayoutManager);
         Query query = mDataReference.limitToLast(3);
-
         mAdapter = new FirebaseRecyclerAdapter<UploadInfo, ImgViewholder>(
                 UploadInfo.class, R.layout.viewholder, ImgViewholder.class, query) {
             @Override
