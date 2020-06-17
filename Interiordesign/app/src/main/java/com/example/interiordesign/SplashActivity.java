@@ -20,10 +20,10 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (firebaseAuth.getCurrentUser()!=null){
-                    startActivity(new Intent(SplashActivity.this,MainActivity2.class));
+                    startActivity(new Intent(SplashActivity.this,CategoryActivity.class));
                 }
                 else{
-                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this,FirstActivity.class));
                 }
                 finish();
             }
