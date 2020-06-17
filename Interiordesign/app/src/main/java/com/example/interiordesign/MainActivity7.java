@@ -64,13 +64,6 @@ public class MainActivity7 extends BaseActivity{
                 startActivity(new Intent(MainActivity7.this,MainActivity.class));
             }
         });
-
-        findViewById(R.id.imageView3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity7.this,FirstActivity.class));
-            }
-        });
     }
 
     private boolean validateForm(){
@@ -103,7 +96,7 @@ public class MainActivity7 extends BaseActivity{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            startActivity(new Intent(MainActivity7.this,CategoryActivity.class));
+                            startActivity(new Intent(MainActivity7.this,MainActivity2.class));
                         }
                         else{
                             Toast.makeText(MainActivity7.this,"Login unsuccessful! Please try again",Toast.LENGTH_SHORT).show();

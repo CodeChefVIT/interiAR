@@ -17,14 +17,11 @@
         android:roundIcon="@drawable/i20200615023829"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CategoryActivity"></activity>
-        <activity android:name=".FirstActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity7" />
         <activity android:name=".MainActivity3" />
         <activity android:name=".MainActivity2" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
