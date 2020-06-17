@@ -25,8 +25,6 @@ public class MainActivity2 extends AppCompatActivity{
             R.drawable.i202005150005,R.drawable.i202005150006,R.drawable.i202005150007,R.drawable.i202005150008};
     private RecyclerAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
 
     @Override
