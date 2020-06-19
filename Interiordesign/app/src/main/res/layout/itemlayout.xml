@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="15dp"
+    android:elevation="5dp">
 
     <ImageView
-        android:layout_width="400dp"
-        android:layout_height="250dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:src="@drawable/ic_launcher_foreground"
         android:id="@+id/furniture"
+        android:elevation="5dp"
         ></ImageView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/viewbtn"
+        android:layout_toEndOf="@+id/furniture"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/btn_rounded"
+        android:text="View"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:typeface="serif"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/furniture"
+        android:layout_marginLeft="40dp"
+        android:typeface="serif"
+        android:textSize="20dp"
+        android:id="@+id/itemname"/>
 
-</LinearLayout>
+</RelativeLayout>

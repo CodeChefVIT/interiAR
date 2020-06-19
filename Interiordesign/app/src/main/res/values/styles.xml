@@ -9,8 +9,7 @@
     </style>
 
     <style name="CustomToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:text">@string/choosing_item</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="overlapAnchor">false</item>
         <item name="android:dropDownVerticalOffset">-4dp</item>
     </style>

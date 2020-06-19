@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ public class MainActivity7 extends BaseActivity{
     Button btnsignin;
     TextView tvsignup;
     FirebaseAuth mFirebaseAuth;
+    boolean visibility=false;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
@@ -64,6 +68,30 @@ public class MainActivity7 extends BaseActivity{
                 startActivity(new Intent(MainActivity7.this,MainActivity.class));
             }
         });
+
+        findViewById(R.id.imageView3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity7.this,FirstActivity.class));
+            }
+        });
+
+        ImageView imageButton=findViewById(R.id.imageButton2);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (visibility==false){
+                    password.setTransformationMethod(null);
+                    imageButton.setImageResource(R.drawable.ic_visibility_off_black_24dp);
+                    visibility=true;
+                }
+                else{
+                    password.setTransformationMethod(new PasswordTransformationMethod());
+                    imageButton.setImageResource(R.drawable.ic_visibility_black_24dp);
+                    visibility=false;
+                }
+            }
+        });
     }
 
     private boolean validateForm(){
@@ -96,7 +124,7 @@ public class MainActivity7 extends BaseActivity{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            startActivity(new Intent(MainActivity7.this,MainActivity2.class));
+                            startActivity(new Intent(MainActivity7.this,CategoryActivity.class));
                         }
                         else{
                             Toast.makeText(MainActivity7.this,"Login unsuccessful! Please try again",Toast.LENGTH_SHORT).show();
