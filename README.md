@@ -25,12 +25,12 @@ An Application Which Populates the Idea of Interior Designing , Visualizing Obje
 
 ## Screenshots
 
+<img src="https://github.com/decipher07/interiAR/blob/master/Builds/InitialStartup.jpeg" alt="Project Screenshots" width="300px">
 <img src="https://github.com/decipher07/interiAR/blob/master/Builds/Login.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/recyclerview-1.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/recyclerview-2.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/recyclerview-3.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/sampleimage-1.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/sampleimage-2.jpeg" alt="Project Screenshots" width="300px">
+<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Categories.jpeg" alt="Project Screenshots" width="300px">
+<img src="https://github.com/decipher07/interiAR/blob/master/Builds/recyclerview-4.jpeg" alt="Project Screenshots" width="300px">
+<img src="https://github.com/decipher07/interiAR/blob/master/Builds/CameraActivity.jpeg" alt="Project Screenshots" width="300px">
+<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Profile.jpeg" alt="Project Screenshots" width="300px">
 
 
 

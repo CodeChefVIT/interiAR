@@ -7,22 +7,14 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity7">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="350dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-108dp" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Login"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         android:typeface="serif"
         android:background="@drawable/btn_rounded"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,9 +23,9 @@
 
     <EditText
         android:id="@+id/editText3"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="200dp"
         android:ems="10"
         android:hint="Email ID"
         android:typeface="serif"
@@ -44,7 +36,7 @@
 
     <EditText
         android:id="@+id/editText4"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
@@ -61,9 +53,44 @@
         android:layout_height="wrap_content"
         android:text="@string/new_user"
         android:typeface="serif"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="51dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:text="Login"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/editText4"
+        android:layout_marginStart="290dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/editText4"
+        app:layout_constraintStart_toStartOf="@+id/editText4"
+        app:layout_constraintTop_toTopOf="@+id/editText4"
+        app:srcCompat="@drawable/ic_visibility_black_24dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

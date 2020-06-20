@@ -13,34 +13,43 @@
         android:layout_height="match_parent" />
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/downloadBtn1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/savebtn1"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="24dp"
-        android:text="Download"
-        android:background="@drawable/btn_rounded"
-        />
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/ic_camera" />
 
     <Button
-        android:id="@+id/savebtn1"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/downloadBtn1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="96dp"
-        android:text="Save Screenshot"
-        android:background="@drawable/btn_rounded"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/ic_file_download_black_24dp"/>
 
     <Button
         android:id="@+id/removeBtn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/ic_delete_black_24dp"/>
+
+    <Button
+        android:id="@+id/closeBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Clear"
-        android:background="@drawable/btn_rounded"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_close_black_24dp"/>
+
 
 </RelativeLayout>

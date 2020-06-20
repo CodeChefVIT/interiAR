@@ -5,17 +5,21 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageViewHolder> {
     private int[] images;
+    private String[] names;
     private Context context;
 
-    public RecyclerAdapter(int[] images,Context context) {
+    public RecyclerAdapter(int[] images,String[] names,Context context) {
         this.images = images;
+        this.names=names;
         this.context=context;
     }
 
@@ -23,7 +27,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageV
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.itemlayout, parent, false);
-        ImageViewHolder viewHolder = new ImageViewHolder(view,context,images);
+        ImageViewHolder viewHolder = new ImageViewHolder(view,context,images,names);
         return viewHolder;
     }
 
@@ -40,24 +44,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageV
 
     public static class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView furniture;
+        Button button;
         Context context;
         int[] images;
-
-        public ImageViewHolder(View view,Context context,int[] images) {
+        String[] names;
+        public ImageViewHolder(View view,Context context,int[] images,String[] names) {
             super(view);
             furniture = view.findViewById(R.id.furniture);
-            view.setOnClickListener(this);
+            button=view.findViewById(R.id.viewbtn);
+            button.setOnClickListener(this);
             this.context=context;
             this.images=images;
+            this.names=names;
         }
 
         @Override
         public void onClick(View v) {
             int pos=getAdapterPosition();
             Intent intent=new Intent(context,MainActivity3.class);
-            intent.putExtra("selected_item",pos);
+            intent.putExtra("selected_item",names[pos]);
             context.startActivity(intent);
-
         }
     }
 }

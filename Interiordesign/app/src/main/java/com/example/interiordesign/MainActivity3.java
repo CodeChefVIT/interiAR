@@ -3,10 +3,19 @@ package com.example.interiordesign;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Camera;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +25,8 @@ import android.os.HandlerThread;
 import android.util.Log;
 import android.view.PixelCopy;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,103 +54,13 @@ public class MainActivity3 extends AppCompatActivity {
 
     ArFragment arFragment;
     AnchorNode anchorNode;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         String fil;
         String filename;
-        int itemno;
-        itemno = getIntent().getIntExtra("selected_item",0);
-        switch(itemno){
-            case 0:
-                fil="artistschool";
-                break;
-            case 1:
-                fil="bedroom";
-                break;
-            case 2:
-                fil="besidetable";
-                break;
-            case 3:
-                fil="chairsingleton";
-                break;
-            case 4:
-                fil="chairsingle";
-                break;
-            case 5:
-                fil="comfycouch";
-                break;
-            case 6:
-                fil="dressingtable";
-                break;
-            case 7:
-                fil="hearth";
-                break;
-            case 8:
-                fil="kitchenTable";
-                break;
-            case 9:
-                fil="sofasingle";
-                break;
-            case 10:
-                fil="tv";
-                break;
-            case 11:
-                fil="sleeepingtable";
-                break;
-            case 12:
-                fil="fireplace";
-                break;
-            case 13:
-                fil="desk";
-                break;
-            case 14:
-                fil="sofafbxabitgood";
-                break;
-            case 15:
-                fil="jummer";
-                break;
-            case 16:
-                fil="dressingtableparttow";
-                break;
-            case 17:
-                fil="HUG ARMCHAIR";
-                break;
-            case 18:
-                fil="sofabitgood";
-                break;
-            case 19:
-                fil="shellabitlow";
-                break;
-            case 20:
-                fil="dinningtablemodel";
-                break;
-            case 21:
-                fil="lowspeeddinningtable";
-                break;
-            case 22:
-                fil="sideboard";
-                break;
-            case 23:
-                fil="jocodinningtable";
-                break;
-            case 24:
-                fil="abcd";
-                break;
-            case 25:
-                fil="NewTod";
-                break;
-            case 26:
-                fil="fileag";
-                break;
-            case 27:
-                fil="out";
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + itemno);
-        }
+        fil = getIntent().getStringExtra("selected_item");
         filename=fil+".glb";
         findViewById(R.id.savebtn1).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,9 +68,7 @@ public class MainActivity3 extends AppCompatActivity {
                 takePhoto();
             }
         });
-
         FirebaseApp.initializeApp(this);
-
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference modelRef = storage.getReference().child(filename);
 
@@ -160,7 +79,6 @@ public class MainActivity3 extends AppCompatActivity {
                     public void onClick(View v) {
                         try {
                             File file = File.createTempFile(fil, "glb");
-
                             modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @RequiresApi(api = Build.VERSION_CODES.N)
                                 @Override
@@ -201,6 +119,13 @@ public class MainActivity3 extends AppCompatActivity {
             transformableNode.select();
 
         }));
+
+        findViewById(R.id.closeBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity3.super.onBackPressed();
+            }
+        });
     }
     private ModelRenderable renderable ;
 
@@ -234,9 +159,10 @@ public class MainActivity3 extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             PixelCopy.request(view, bitmap, (copyResult) -> {
                 if (copyResult == PixelCopy.SUCCESS) {
+                    Toast.makeText(getApplicationContext(),"Screenshot taken",Toast.LENGTH_SHORT).show();
                     handleUpload(bitmap);
                 } else {
-                    Toast toast = Toast.makeText(MainActivity3.this, "Failed to save screenshot !" + copyResult, Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Failed to take screenshot !" + copyResult, Toast.LENGTH_LONG);
                     toast.show();
                 }
                 handlerThread.quitSafely();
@@ -247,11 +173,12 @@ public class MainActivity3 extends AppCompatActivity {
         String user= FirebaseAuth.getInstance().getCurrentUser().getEmail();
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        String ssfile=user.replace('.','_');
         StorageReference reference=FirebaseStorage.getInstance().getReference()
-                .child(user)
+                .child(ssfile)
                 .child(Calendar.getInstance().getTime().toString()+".jpg");
         reference.putBytes(baos.toByteArray());
-        Toast.makeText(this,"Screenshot uploaded successfully",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Screenshot uploaded successfully",Toast.LENGTH_SHORT).show();
     }
 
     private void removeAnchorNode(AnchorNode nodeToremove) {
@@ -261,9 +188,10 @@ public class MainActivity3 extends AppCompatActivity {
             nodeToremove.getAnchor().detach();
             nodeToremove.setParent(null);
             nodeToremove = null;
-            Toast.makeText(this, "The Object Was Successfully Deleted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "The Object Was Successfully Deleted", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Test Delete - markAnchorNode was null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Test Delete - markAnchorNode was null", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

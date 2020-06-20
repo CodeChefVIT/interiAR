@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference modelRef = storage.getReference().child("out.glb");
+        StorageReference modelRef = storage.getReference().child("Sofa.glb");
 
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
         findViewById(R.id.downloadBtn)
                 .setOnClickListener( v -> {
                     try {
-                        File file = File.createTempFile("out", "glb");
-
+                        File file = File.createTempFile("Sofa", "glb");
+                        Log.i("mil gya", "hi");
                         modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.removeBtn)
                 .setOnClickListener( v -> {
                     try {
-                        File file = File.createTempFile("out", "glb");
+                        File file = File.createTempFile("Sofa", "glb");
 
                         modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                             @Override
