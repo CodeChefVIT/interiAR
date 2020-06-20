@@ -89,6 +89,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
         android:text="Signup"
+        android:textColor="@android:color/holo_green_dark"
         android:fontFamily="@font/molengo"
         android:textStyle="bold"
         android:textSize="30sp"

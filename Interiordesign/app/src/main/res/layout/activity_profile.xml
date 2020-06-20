@@ -24,7 +24,7 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="210dp"
         android:fontFamily="@font/brawler"
         android:text="My Cart"
         android:textSize="30sp"
@@ -48,7 +48,7 @@
         android:background="@drawable/i202006190004"
         android:text="Created by CodeChef-VIT"
         android:textColor="@android:color/black"
-        android:typeface="serif"
+        android:fontFamily="@font/molengo"
         android:textSize="15dp"
         android:textAlignment="center"
         android:id="@+id/textView13"/>
@@ -56,15 +56,16 @@
 
     <ImageButton
         android:id="@+id/logout"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="216dp"
+        android:background="@drawable/profilecolour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.621"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/exit" />
+        app:srcCompat="@drawable/ic_power_settings_new_black_24dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
