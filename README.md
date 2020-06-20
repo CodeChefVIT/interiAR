@@ -9,8 +9,7 @@
 An Application Which Populates the Idea of Interior Designing , Visualizing Objects and Displaying the Output
 
 ---
-[![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](https://developers.google.com/sceneform/develop)
-  [![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](https://developer.android.com/studio/intro)
+  [![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](https://github.com/CodeChefVIT/interiAR/blob/master/Builds/App%20apk/interiAR.apk)
 
 
 
@@ -25,13 +24,17 @@ An Application Which Populates the Idea of Interior Designing , Visualizing Obje
 
 ## Screenshots
 
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/InitialStartup.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Login.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Categories.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/recyclerview-4.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/CameraActivity.jpeg" alt="Project Screenshots" width="300px">
-<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Profile.jpeg" alt="Project Screenshots" width="300px">
+<p align="center">
+	<img src="https://github.com/decipher07/interiAR/blob/master/Builds/InitialStartup.jpeg" alt="Project Screenshots" width="300px">
+</p>
+	
+<p align="center">
+	<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Categories.jpeg" alt="Project Screenshots" width="250px">		<img src="https://github.com/decipher07/interiAR/blob/master/Builds/recyclerview-4.jpeg" alt="Project Screenshots" width="250px">	<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Login.jpeg" alt="Project Screenshots" width="250px">
+</p>
 
+<p align="center">	
+	<img src="https://github.com/decipher07/interiAR/blob/master/Builds/CameraActivity.jpeg" alt="Project Screenshots" width="250px">		<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Profile.jpeg" alt="Project Screenshots" width="250px">
+</p>
 
 
 ## Instructions to run
