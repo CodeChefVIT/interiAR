@@ -29,7 +29,7 @@ An Application Which Populates the Idea of Interior Designing , Visualizing Obje
 </p>
 	
 <p align="center">
-	<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Categories.jpeg" alt="Project Screenshots" width="200px">		<img src="https://github.com/decipher07/interiAR/blob/master/Builds/recyclerview-4.jpeg" alt="Project Screenshots" width="200px">	<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Login.jpeg" alt="Project Screenshots" width="200px">
+	<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Categories.jpeg" alt="Project Screenshots" width="250px">		<img src="https://github.com/decipher07/interiAR/blob/master/Builds/recyclerview-4.jpeg" alt="Project Screenshots" width="250px">	<img src="https://github.com/decipher07/interiAR/blob/master/Builds/Login.jpeg" alt="Project Screenshots" width="250px">
 </p>
 
 <p align="center">	
