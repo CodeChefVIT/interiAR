@@ -3,6 +3,7 @@ package com.example.interiordesign;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -25,13 +26,12 @@ public class MainActivity extends BaseActivity {
     Button btnsignup;
     TextView tvsignin;
     FirebaseAuth mFirebaseAuth;
-    boolean visibility=false;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mFirebaseAuth=FirebaseAuth.getInstance();
         emailid=findViewById(R.id.editText);
         password=findViewById(R.id.editText2);
@@ -41,6 +41,9 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (validateForm()){
+                    progressDialog=new ProgressDialog(MainActivity.this);
+                    progressDialog.setMessage("Loading....");
+                    progressDialog.show();
                     createAccount(emailid.getText().toString(),password.getText().toString());
                 }
             }
@@ -55,22 +58,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,FirstActivity.class));
-            }
-        });
-        ImageView imageButton=findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (visibility==false){
-                    password.setTransformationMethod(null);
-                    imageButton.setImageResource(R.drawable.ic_visibility_off_black_24dp);
-                    visibility=true;
-                }
-                else{
-                    password.setTransformationMethod(new PasswordTransformationMethod());
-                    imageButton.setImageResource(R.drawable.ic_visibility_black_24dp);
-                    visibility=false;
-                }
             }
         });
     }
@@ -97,15 +84,16 @@ public class MainActivity extends BaseActivity {
     private void createAccount(String email,String pwd){
         View view=this.getCurrentFocus();
         hideKeyboard(view);
-        showProgressDialog();
         mFirebaseAuth.createUserWithEmailAndPassword(email,pwd)
                 .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            progressDialog.dismiss();
                             startActivity(new Intent(MainActivity.this,CategoryActivity.class));
                         }
                         else{
+                            progressDialog.dismiss();
                             Toast.makeText(MainActivity.this,"Registration unsuccessful! Please try again",Toast.LENGTH_SHORT).show();
                         }
                     }
