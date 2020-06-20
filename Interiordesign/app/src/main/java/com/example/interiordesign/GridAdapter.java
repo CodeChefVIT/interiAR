@@ -16,18 +16,16 @@ public class GridAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<String> imageUrls;
-    private ArrayList<String> imageNames;
     private LayoutInflater layoutInflater;
 
-    public GridAdapter(Context context,ArrayList<String> imageUrls,ArrayList<String> imageNames){
+    public GridAdapter(Context context,ArrayList<String> imageUrls){
         this.context=context;
-        this.imageNames=imageNames;
         this.imageUrls=imageUrls;
     }
 
     @Override
     public int getCount() {
-        return imageNames.size();
+        return imageUrls.size();
     }
 
     @Override
@@ -46,15 +44,13 @@ public class GridAdapter extends BaseAdapter {
             layoutInflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         if(convertView==null){
-            convertView=layoutInflater.inflate(R.layout.grid_item,null);
+            convertView=layoutInflater.inflate(R.layout.resultsitem,null);
         }
-        ImageView imageView=convertView.findViewById(R.id.image_view);
+        ImageView imageView=convertView.findViewById(R.id.image_view2);
         Glide.with(context)
                 .asBitmap()
                 .load(imageUrls.get(position))
                 .into(imageView);
-        TextView textView=convertView.findViewById(R.id.textView9);
-        textView.setText(imageNames.get(position));
         return convertView;
     }
 

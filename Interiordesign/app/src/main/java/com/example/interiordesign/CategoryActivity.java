@@ -45,12 +45,6 @@ public class CategoryActivity extends AppCompatActivity {
                     startActivity(intent1);
                     return true;
                 }
-                else if (item.getItemId()==R.id.item2){
-                    FirebaseAuth.getInstance().signOut();
-                    Intent intent=new Intent(CategoryActivity.this,FirstActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
                 else {
                     return false;
                 }

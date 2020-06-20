@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Login"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         android:typeface="serif"
         android:background="@drawable/btn_rounded"
         app:layout_constraintEnd_toEndOf="parent"

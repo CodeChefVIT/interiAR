@@ -20,20 +20,12 @@
         android:layout_centerVertical="true"
         android:id="@+id/viewbtn"
         android:layout_toEndOf="@+id/furniture"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="60dp"
         android:background="@drawable/btn_rounded"
         android:text="View"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:typeface="serif"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/furniture"
-        android:layout_marginLeft="40dp"
-        android:typeface="serif"
-        android:textSize="20dp"
-        android:id="@+id/itemname"/>
 
 </RelativeLayout>

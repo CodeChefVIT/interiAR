@@ -12,11 +12,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/i20200615023829"
+        android:icon="@drawable/logononame"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/i20200615023829"
+        android:roundIcon="@drawable/logononame"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".DisplayImageActivity"></activity>
         <activity android:name=".CategoryActivity" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".MainActivity" />

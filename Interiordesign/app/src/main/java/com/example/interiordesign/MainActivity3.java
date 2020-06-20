@@ -159,10 +159,10 @@ public class MainActivity3 extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             PixelCopy.request(view, bitmap, (copyResult) -> {
                 if (copyResult == PixelCopy.SUCCESS) {
-                    Toast.makeText(MainActivity3.this,"Screenshot taken",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Screenshot taken",Toast.LENGTH_SHORT).show();
                     handleUpload(bitmap);
                 } else {
-                    Toast toast = Toast.makeText(MainActivity3.this, "Failed to save screenshot !" + copyResult, Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Failed to take screenshot !" + copyResult, Toast.LENGTH_LONG);
                     toast.show();
                 }
                 handlerThread.quitSafely();
@@ -178,7 +178,7 @@ public class MainActivity3 extends AppCompatActivity {
                 .child(ssfile)
                 .child(Calendar.getInstance().getTime().toString()+".jpg");
         reference.putBytes(baos.toByteArray());
-        Toast.makeText(this,"Screenshot uploaded successfully",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Screenshot uploaded successfully",Toast.LENGTH_SHORT).show();
     }
 
     private void removeAnchorNode(AnchorNode nodeToremove) {
@@ -188,9 +188,9 @@ public class MainActivity3 extends AppCompatActivity {
             nodeToremove.getAnchor().detach();
             nodeToremove.setParent(null);
             nodeToremove = null;
-            Toast.makeText(this, "The Object Was Successfully Deleted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "The Object Was Successfully Deleted", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Test Delete - markAnchorNode was null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Test Delete - markAnchorNode was null", Toast.LENGTH_SHORT).show();
         }
     }
 
