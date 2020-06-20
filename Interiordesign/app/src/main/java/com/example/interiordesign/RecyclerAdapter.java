@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,13 +44,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageV
 
     public static class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView furniture;
+        Button button;
         Context context;
         int[] images;
         String[] names;
         public ImageViewHolder(View view,Context context,int[] images,String[] names) {
             super(view);
             furniture = view.findViewById(R.id.furniture);
-            view.setOnClickListener(this);
+            button=view.findViewById(R.id.viewbtn);
+            button.setOnClickListener(this);
             this.context=context;
             this.images=images;
             this.names=names;

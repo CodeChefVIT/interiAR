@@ -83,8 +83,8 @@
 
     <ImageButton
         android:id="@+id/logout"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:background="@drawable/profilecolour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView12"
@@ -94,21 +94,21 @@
         app:srcCompat="@drawable/ic_power_settings_new_black_24dp"
         tools:layout_editor_absoluteY="212dp" />
 
-    <ImageView
-        android:id="@+id/profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_person"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/ic_person" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/profile"
+        android:layout_marginTop="20dp"/>
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="51dp"
         android:layout_height="26dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
