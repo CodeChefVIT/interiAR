@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
                     progressDialog=new ProgressDialog(MainActivity.this);
                     progressDialog.setMessage("Loading....");
                     progressDialog.show();
-                    createAccount(emailid.getText().toString(),password.getText().toString());
+                    createAccount(emailid.getText().toString().trim(),password.getText().toString());
                 }
             }
         });
@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity {
     }
     private boolean validateForm(){
         boolean valid=true;
-        String email=emailid.getText().toString();
+        String email=emailid.getText().toString().trim();
         String pwd=password.getText().toString();
         if(TextUtils.isEmpty(email)){
             emailid.setError("Required");
