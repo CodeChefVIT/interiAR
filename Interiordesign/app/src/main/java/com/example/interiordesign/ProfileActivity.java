@@ -2,6 +2,7 @@ package com.example.interiordesign;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -64,11 +67,15 @@ public class ProfileActivity extends AppCompatActivity {
                 ProfileActivity.super.onBackPressed();
             }
         });
+        Window window=this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
         profileImageView=findViewById(R.id.profile);
         textView=findViewById(R.id.textView5);
         mFirebaseAuth=FirebaseAuth.getInstance();
         user= Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getEmail();
-        String welcomemsg="Welcome "+user;
+        String welcomemsg="\n\n\n\n\n    My Profile\n\n    Welcome "+user;
         ssfile=user.replace('.','_');
         textView.setText(welcomemsg);
         gridView=findViewById(R.id.grid);

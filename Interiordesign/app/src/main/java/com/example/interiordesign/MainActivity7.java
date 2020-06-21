@@ -2,13 +2,17 @@ package com.example.interiordesign;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,7 +30,8 @@ public class MainActivity7 extends BaseActivity{
     Button btnsignin;
     TextView tvsignup;
     FirebaseAuth mFirebaseAuth;
-    boolean visibility=false;
+    ProgressDialog progressDialog;
+
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
@@ -39,6 +44,10 @@ public class MainActivity7 extends BaseActivity{
         password=findViewById(R.id.editText4);
         btnsignin=findViewById(R.id.button2);
         tvsignup=findViewById(R.id.textView2);
+        Window window=this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
 
         mAuthStateListener=new FirebaseAuth.AuthStateListener() {
             @Override
@@ -57,6 +66,9 @@ public class MainActivity7 extends BaseActivity{
             @Override
             public void onClick(View v) {
                 if (validateForm()){
+                    progressDialog=new ProgressDialog(MainActivity7.this);
+                    progressDialog.setMessage("Loading....");
+                    progressDialog.show();
                     signIn(emailid.getText().toString(),password.getText().toString());
                 }
             }
@@ -76,22 +88,6 @@ public class MainActivity7 extends BaseActivity{
             }
         });
 
-        ImageView imageButton=findViewById(R.id.imageButton2);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (visibility==false){
-                    password.setTransformationMethod(null);
-                    imageButton.setImageResource(R.drawable.ic_visibility_off_black_24dp);
-                    visibility=true;
-                }
-                else{
-                    password.setTransformationMethod(new PasswordTransformationMethod());
-                    imageButton.setImageResource(R.drawable.ic_visibility_black_24dp);
-                    visibility=false;
-                }
-            }
-        });
     }
 
     private boolean validateForm(){
@@ -124,9 +120,11 @@ public class MainActivity7 extends BaseActivity{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            progressDialog.dismiss();
                             startActivity(new Intent(MainActivity7.this,CategoryActivity.class));
                         }
                         else{
+                            progressDialog.dismiss();
                             Toast.makeText(MainActivity7.this,"Login unsuccessful! Please try again",Toast.LENGTH_SHORT).show();
                         }
                     }

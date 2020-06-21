@@ -33,16 +33,18 @@
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
     <TextView
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView10"
-        android:text="Categories"
-        android:typeface="serif"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"/>
+        android:fontFamily="@font/molengo"
+        android:textStyle="italic"
+        android:text="Categories"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

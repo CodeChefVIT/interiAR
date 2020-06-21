@@ -47,7 +47,7 @@ $ Run And Debug
 ```
 
 ## Contributors
-- <a href="https://github.com/crusher-pb">Poritosh Bandhan</a>
+- <a href="https://github.com/crusher-pb">Poritosh Bardhan</a>
 - <a href="https://github.com/rishinpandit09">Rishin Pandit</a>
 - <a href="https://github.com/decipher07">Deepankar Jain</a>
 

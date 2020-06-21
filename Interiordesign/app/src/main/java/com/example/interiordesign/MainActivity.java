@@ -2,12 +2,16 @@ package com.example.interiordesign;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -25,13 +29,16 @@ public class MainActivity extends BaseActivity {
     Button btnsignup;
     TextView tvsignin;
     FirebaseAuth mFirebaseAuth;
-    boolean visibility=false;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Window window=this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
         mFirebaseAuth=FirebaseAuth.getInstance();
         emailid=findViewById(R.id.editText);
         password=findViewById(R.id.editText2);
@@ -41,7 +48,10 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (validateForm()){
-                    createAccount(emailid.getText().toString(),password.getText().toString());
+                    progressDialog=new ProgressDialog(MainActivity.this);
+                    progressDialog.setMessage("Loading....");
+                    progressDialog.show();
+                    createAccount(emailid.getText().toString().trim(),password.getText().toString());
                 }
             }
         });
@@ -57,26 +67,10 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this,FirstActivity.class));
             }
         });
-        ImageView imageButton=findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (visibility==false){
-                    password.setTransformationMethod(null);
-                    imageButton.setImageResource(R.drawable.ic_visibility_off_black_24dp);
-                    visibility=true;
-                }
-                else{
-                    password.setTransformationMethod(new PasswordTransformationMethod());
-                    imageButton.setImageResource(R.drawable.ic_visibility_black_24dp);
-                    visibility=false;
-                }
-            }
-        });
     }
     private boolean validateForm(){
         boolean valid=true;
-        String email=emailid.getText().toString();
+        String email=emailid.getText().toString().trim();
         String pwd=password.getText().toString();
         if(TextUtils.isEmpty(email)){
             emailid.setError("Required");
@@ -97,15 +91,16 @@ public class MainActivity extends BaseActivity {
     private void createAccount(String email,String pwd){
         View view=this.getCurrentFocus();
         hideKeyboard(view);
-        showProgressDialog();
         mFirebaseAuth.createUserWithEmailAndPassword(email,pwd)
                 .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            progressDialog.dismiss();
                             startActivity(new Intent(MainActivity.this,CategoryActivity.class));
                         }
                         else{
+                            progressDialog.dismiss();
                             Toast.makeText(MainActivity.this,"Registration unsuccessful! Please try again",Toast.LENGTH_SHORT).show();
                         }
                     }
