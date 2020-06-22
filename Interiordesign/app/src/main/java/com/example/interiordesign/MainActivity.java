@@ -25,7 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends BaseActivity {
-    EditText emailid,password;
+    EditText emailid,password,confpass;
     Button btnsignup;
     TextView tvsignin;
     FirebaseAuth mFirebaseAuth;
@@ -42,16 +42,24 @@ public class MainActivity extends BaseActivity {
         mFirebaseAuth=FirebaseAuth.getInstance();
         emailid=findViewById(R.id.editText);
         password=findViewById(R.id.editText2);
+        String mail=password.getText().toString().trim();
+        confpass=findViewById(R.id.editText6);
+        String conf=confpass.getText().toString().trim();
         btnsignup=findViewById(R.id.button);
         tvsignin=findViewById(R.id.textView);
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateForm()){
-                    progressDialog=new ProgressDialog(MainActivity.this);
-                    progressDialog.setMessage("Loading....");
-                    progressDialog.show();
-                    createAccount(emailid.getText().toString().trim(),password.getText().toString());
+                if (mail.equals(conf)) {
+                    if (validateForm()) {
+                        progressDialog = new ProgressDialog(MainActivity.this);
+                        progressDialog.setMessage("Loading....");
+                        progressDialog.show();
+                        createAccount(emailid.getText().toString().trim(), password.getText().toString().trim());
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Your passwords do not match! Try agin",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -71,7 +79,7 @@ public class MainActivity extends BaseActivity {
     private boolean validateForm(){
         boolean valid=true;
         String email=emailid.getText().toString().trim();
-        String pwd=password.getText().toString();
+        String pwd=password.getText().toString().trim();
         if(TextUtils.isEmpty(email)){
             emailid.setError("Required");
             valid=false;
@@ -91,7 +99,7 @@ public class MainActivity extends BaseActivity {
     private void createAccount(String email,String pwd){
         View view=this.getCurrentFocus();
         hideKeyboard(view);
-        mFirebaseAuth.createUserWithEmailAndPassword(email,pwd)
+        mFirebaseAuth.createUserWithEmailAndPassword(email.trim(),pwd.trim())
                 .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
@@ -20,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,14 +35,13 @@ public class MainActivity7 extends BaseActivity{
     TextView tvsignup;
     FirebaseAuth mFirebaseAuth;
     ProgressDialog progressDialog;
-
+    TextView forgotPassword;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main7);
-
         mFirebaseAuth=FirebaseAuth.getInstance();
         emailid=findViewById(R.id.editText3);
         password=findViewById(R.id.editText4);
@@ -48,6 +51,14 @@ public class MainActivity7 extends BaseActivity{
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
+
+        forgotPassword=findViewById(R.id.forgetPassword);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity7.this,ForgotPasswordActivity.class));
+            }
+        });
 
         mAuthStateListener=new FirebaseAuth.AuthStateListener() {
             @Override
@@ -92,8 +103,8 @@ public class MainActivity7 extends BaseActivity{
 
     private boolean validateForm(){
         boolean valid=true;
-        String email=emailid.getText().toString();
-        String pwd=password.getText().toString();
+        String email=emailid.getText().toString().trim();
+        String pwd=password.getText().toString().trim();
         if (TextUtils.isEmpty(email)){
             emailid.setError("Required");
             valid=false;
@@ -115,7 +126,7 @@ public class MainActivity7 extends BaseActivity{
         showProgressDialog();
         View view=this.getCurrentFocus();
         hideKeyboard(view);
-        mFirebaseAuth.signInWithEmailAndPassword(email,pwd)
+        mFirebaseAuth.signInWithEmailAndPassword(email.trim(),pwd.trim())
                 .addOnCompleteListener(MainActivity7.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
