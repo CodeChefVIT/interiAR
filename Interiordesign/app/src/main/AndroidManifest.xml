@@ -17,7 +17,8 @@
         android:roundIcon="@drawable/logononame"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayImageActivity"></activity>
+        <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".DisplayImageActivity" />
         <activity android:name=".CategoryActivity" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".MainActivity" />

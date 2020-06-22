@@ -3,4 +3,5 @@
     <string name="existing_user">Already have an account ? <b>Sign in</b></string>
     <string name="new_user">Don\'t have an account ? <b>Sign up</b></string>
     <string name="choosing_item">Choose item</string>
+    <string name="forget_password"><u>Forgot password ?</u></string>
 </resources>
