@@ -75,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
         textView=findViewById(R.id.textView5);
         mFirebaseAuth=FirebaseAuth.getInstance();
         user= Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getEmail();
-        String welcomemsg="\n\n\n\n\n    My Profile\n\n    Welcome "+user;
+        String welcomemsg="\n\n\n\n    My Profile\n\n    Welcome "+user;
         ssfile=user.replace('.','_');
         textView.setText(welcomemsg);
         gridView=findViewById(R.id.grid);
