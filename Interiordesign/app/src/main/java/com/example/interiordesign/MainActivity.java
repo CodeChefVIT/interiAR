@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -42,15 +43,15 @@ public class MainActivity extends BaseActivity {
         mFirebaseAuth=FirebaseAuth.getInstance();
         emailid=findViewById(R.id.editText);
         password=findViewById(R.id.editText2);
-        String mail=password.getText().toString().trim();
+        String pass=password.getText().toString();
         confpass=findViewById(R.id.editText6);
-        String conf=confpass.getText().toString().trim();
+        String conf=confpass.getText().toString();
         btnsignup=findViewById(R.id.button);
         tvsignin=findViewById(R.id.textView);
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mail.equals(conf)) {
+                if (password.getText().toString().equals(confpass.getText().toString())) {
                     if (validateForm()) {
                         progressDialog = new ProgressDialog(MainActivity.this);
                         progressDialog.setMessage("Loading....");
@@ -66,12 +67,14 @@ public class MainActivity extends BaseActivity {
         tvsignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Credentials" , pass + " " + conf );
                 startActivity(new Intent(MainActivity.this,MainActivity7.class));
             }
         });
         findViewById(R.id.imageView4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("Credentials" , pass + " " + conf );
                 startActivity(new Intent(MainActivity.this,FirstActivity.class));
             }
         });
