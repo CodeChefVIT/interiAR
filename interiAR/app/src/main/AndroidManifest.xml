@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.codechefvit.interiAR">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:glEsVersion="0x00030000"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera.ar" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logononame"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logononame"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.codechefvit.interiAR.ForgotPasswordActivity"></activity>
+        <activity android:name="com.codechefvit.interiAR.DisplayImageActivity" />
+        <activity android:name="com.codechefvit.interiAR.CategoryActivity" />
+        <activity android:name="com.codechefvit.interiAR.FirstActivity" />
+        <activity android:name="com.codechefvit.interiAR.MainActivity" />
+        <activity android:name="com.codechefvit.interiAR.ProfileActivity" />
+        <activity android:name="com.codechefvit.interiAR.MainActivity7" />
+        <activity android:name="com.codechefvit.interiAR.MainActivity3" />
+        <activity android:name="com.codechefvit.interiAR.MainActivity2" />
+        <activity android:name="com.codechefvit.interiAR.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
+    </application>
+
+</manifest>
