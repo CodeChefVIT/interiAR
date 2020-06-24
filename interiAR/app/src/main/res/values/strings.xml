@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">InteriAR</string>
+    <string name="existing_user">Already have an account ? <b>Sign in</b></string>
+    <string name="new_user">Don\'t have an account ? <b>Sign up</b></string>
+    <string name="choosing_item">Choose item</string>
+    <string name="forget_password"><u>Forgot password ?</u></string>
+    <string name="welcome"><b>Welcome to interiAR</b>\nSet up your dream room</string>
+</resources>
