@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText2"
-            android:hint="Password ( Min 8 )"
+            android:hint="Password ( Min 6 )"
             android:fontFamily="@font/brawler"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText6"
-            android:hint="Confirm Password ( Min 8 ) "
+            android:hint="Confirm Password ( Min 6 ) "
             android:fontFamily="@font/brawler"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
