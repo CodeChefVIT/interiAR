@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             android:fontFamily="@font/brawler"/>
     </com.google.android.material.textfield.TextInputLayout>
 
