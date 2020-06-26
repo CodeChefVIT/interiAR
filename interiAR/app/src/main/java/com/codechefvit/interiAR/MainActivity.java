@@ -110,8 +110,8 @@ public class MainActivity extends BaseActivity {
                         }
                         else{
                             progressDialog.dismiss();
-                            if (pwd.length() < 8 )
-                                Toast.makeText(MainActivity.this, "The Minumum Length Of Password must be 8 ", Toast.LENGTH_SHORT).show();
+                            if (pwd.length() < 6 )
+                                Toast.makeText(MainActivity.this, "The Minumum Length Of Password must be 6 ", Toast.LENGTH_SHORT).show();
                             else
                                 Toast.makeText(MainActivity.this,"Registration unsuccessful! Please try again",Toast.LENGTH_SHORT).show();
                         }
