@@ -9,7 +9,7 @@
 An Application Which Populates the Idea of Interior Designing , Visualizing Objects and Displaying the Output
 
 ---
-  [![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](https://github.com/CodeChefVIT/interiAR/blob/master/Builds/App%20apk/interiAR.apk)
+  [![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](https://bit.ly/interiAR)
 
 
 
