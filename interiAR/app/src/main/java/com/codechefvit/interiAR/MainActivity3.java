@@ -8,8 +8,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.util.Log;
 import android.view.PixelCopy;
 import android.view.View;
 import android.view.Window;
@@ -31,13 +33,16 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity3 extends AppCompatActivity {
 
     ArFragment arFragment;
     AnchorNode anchorNode;
+    File videoDirectory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,28 +140,62 @@ public class MainActivity3 extends AppCompatActivity {
                     renderable = modelRenderable;
                 });
     }
-    private void takePhoto(){
+    private void takePhoto() {
+        Toast.makeText(this,"Screenshot Saved",Toast.LENGTH_LONG).show();
         ArSceneView view = arFragment.getArSceneView();
 
-        final Bitmap bitmap = Bitmap.createBitmap(view.getWidth(),view.getHeight(),
+        // Create a bitmap the size of the scene view.
+        final Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
                 Bitmap.Config.ARGB_8888);
 
+        // Create a handler thread to offload the processing of the image.
         final HandlerThread handlerThread = new HandlerThread("PixelCopier");
         handlerThread.start();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            PixelCopy.request(view, bitmap, (copyResult) -> {
-                if (copyResult == PixelCopy.SUCCESS) {
-                    Toast.makeText(getApplicationContext(),"Screenshot taken",Toast.LENGTH_SHORT).show();
-                    handleUpload(bitmap);
-                } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Failed to take screenshot !" + copyResult, Toast.LENGTH_LONG);
-                    toast.show();
+        // Make the request to copy.
+        PixelCopy.request(view, bitmap, (copyResult) -> {
+            if (copyResult == PixelCopy.SUCCESS) {
+                Log.e("save","save");
+                try {
+                    saveBitmapToDisk(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                handlerThread.quitSafely();
-            }, new Handler(handlerThread.getLooper()));
-        }
+
+
+
+            } else {
+
+                Toast.makeText(MainActivity3.this, "screenshot cannot saved",
+                        Toast.LENGTH_LONG).show();
+
+            }
+            handlerThread.quitSafely();
+        }, new Handler(handlerThread.getLooper()));
     }
+
+
+    public void saveBitmapToDisk(Bitmap bitmap) throws IOException {
+
+        if (videoDirectory == null) {
+            videoDirectory =
+                    new File(String.valueOf(new File(
+
+                            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                                    + "/Screenshots")));
+        }
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
+        String formattedDate = df.format(c.getTime());
+
+        File mediaFile = new File(videoDirectory, "RoomViz"+formattedDate+".jpeg");
+
+        FileOutputStream fileOutputStream = new FileOutputStream(mediaFile);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, fileOutputStream);
+        fileOutputStream.flush();
+        fileOutputStream.close();
+    }
+
     private void handleUpload(Bitmap bitmap){
         String user= FirebaseAuth.getInstance().getCurrentUser().getEmail();
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
